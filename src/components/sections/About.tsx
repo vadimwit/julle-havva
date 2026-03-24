@@ -40,7 +40,7 @@ export default function About() {
 
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-200/60">
               <img
-                src="/images/about/julle.jpg"
+                src="/images/about/julle.jpeg"
                 alt="Julle Havva"
                 className="w-full h-[520px] object-cover"
                 onError={(e) => {

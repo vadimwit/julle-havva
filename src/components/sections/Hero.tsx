@@ -24,10 +24,13 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Fallback gradient (shows if video hasn't loaded) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-sage-700" />
+      {/* Fallback: actual photo so there's no dark flash while video loads */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: 'url(/images/hero/IMG_5054.PNG)' }}
+      />
 
-      {/* Background video */}
+      {/* Background video — sits on top of photo once ready */}
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-10"
@@ -41,8 +44,8 @@ export default function Hero() {
         <source src="/videos/hero/20240415_201327.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay — very light veil + darker vignette at bottom for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/40 z-20" />
+      {/* Minimal overlay — just enough contrast for text, barely touches the image */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/35 z-20" />
 
       {/* Decorative lines */}
       <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-gold-400/40 to-transparent hidden lg:block z-30" />
