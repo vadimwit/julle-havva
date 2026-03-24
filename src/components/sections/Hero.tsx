@@ -5,6 +5,7 @@ import { HiChevronDown } from 'react-icons/hi';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { siteConfig } from '../../data/content';
+import { asset } from '../../utils/asset';
 
 const containerVariants = {
   hidden: {},
@@ -27,7 +28,7 @@ export default function Hero() {
       {/* Fallback: actual photo so there's no dark flash while video loads */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/hero/IMG_5054.PNG)' }}
+        style={{ backgroundImage: `url(${asset('/images/hero/IMG_5054.PNG')})` }}
       />
 
       {/* Background video — sits on top of photo once ready */}
@@ -38,10 +39,10 @@ export default function Hero() {
         muted
         loop
         playsInline
-        poster="/images/hero/IMG_5054.PNG"
+        poster={asset('/images/hero/IMG_5054.PNG')}
         onError={(e) => { (e.currentTarget as HTMLVideoElement).style.display = 'none'; }}
       >
-        <source src="/videos/hero/20240415_201327.mp4" type="video/mp4" />
+        <source src={asset('/videos/hero/20240415_201327.mp4')} type="video/mp4" />
       </video>
 
       {/* Minimal overlay — just enough contrast for text, barely touches the image */}

@@ -4,6 +4,7 @@ import { HiCheckCircle } from 'react-icons/hi';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { aboutContent } from '../../data/content';
+import { asset } from '../../utils/asset';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -40,13 +41,13 @@ export default function About() {
 
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-200/60">
               <img
-                src="/images/about/julle.jpeg"
+                src={asset('/images/about/julle.jpeg')}
                 alt="Julle Havva"
                 className="w-full h-[520px] object-cover"
                 onError={(e) => {
                   const el = e.currentTarget as HTMLImageElement;
                   if (!el.src.includes('IMG_5054')) {
-                    el.src = '/images/hero/IMG_5054.PNG';
+                    el.src = asset('/images/hero/IMG_5054.PNG');
                   }
                 }}
               />

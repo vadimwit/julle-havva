@@ -5,6 +5,7 @@ import { Link } from 'react-scroll';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { services } from '../../data/content';
+import { asset } from '../../utils/asset';
 import SectionTitle from '../ui/SectionTitle';
 
 const fadeUp = {
@@ -55,7 +56,7 @@ export default function Services() {
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-200/50">
               {/* Try service image, fall back to gradient */}
               <img
-                src={`/images/services/${service.id}.jpg`}
+                src={asset(`/images/services/${service.id}.jpg`)}
                 alt={s.name}
                 className="w-full h-[480px] object-cover"
                 onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}

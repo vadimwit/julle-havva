@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { galleryItems, siteConfig } from '../../data/content';
+import { asset } from '../../utils/asset';
 import SectionTitle from '../ui/SectionTitle';
 
 export default function Gallery() {
@@ -40,7 +41,7 @@ export default function Gallery() {
                 {/* Actual image */}
                 {!failedImages.has(item.id) && (
                   <img
-                    src={item.src}
+                    src={asset(item.src)}
                     alt={label.alt}
                     className="absolute inset-0 w-full h-full object-cover"
                     onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
