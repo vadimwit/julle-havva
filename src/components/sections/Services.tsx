@@ -54,9 +54,9 @@ export default function Services() {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-sage-300/20 rounded-2xl z-0" />
 
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-200/50">
-              {/* Try service image, fall back to gradient */}
+              {/* Service image — Unsplash stock or local file */}
               <img
-                src={asset(`/images/services/${service.id}.jpg`)}
+                src={service.src ?? asset(`/images/services/${service.id}.jpg`)}
                 alt={s.name}
                 className="w-full h-[480px] object-cover"
                 onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}

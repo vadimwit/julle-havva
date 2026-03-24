@@ -65,6 +65,7 @@ export interface Service {
   icon: string;
   gradient: string;
   duration: string;
+  src?: string;
   en: { name: string; subtitle: string; description: string };
   pt: { name: string; subtitle: string; description: string };
 }
@@ -74,18 +75,19 @@ export const services: Service[] = [
     id: 'kusum-modak',
     icon: 'feather',
     gradient: 'from-amber-100 to-orange-100',
-    duration: '90 min',
+    duration: '60 – 90 min',
+    src: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80',
     en: {
       name: 'Kusum Modak Method',
       subtitle: 'Signature Method',
       description:
-        'This practice combines Ayurvedic principles, assisted yoga stretches, conscious breathing and deep, continuous touch. The session is dynamic, grounding and deeply restorative.\n\nOne of its most distinctive aspects is the use of the feet — creating a unique experience that often awakens curiosity and surprise. Each session is a dialogue between bodies, breath and presence.',
+        'Developed by Kusum Modak — a direct student of yoga master B.K.S. Iyengar — this method weaves together Ayurvedic bodywork, assisted yoga postures, conscious breathing and long, uninterrupted strokes into a single, deeply integrative experience.\n\nWhat makes it truly distinctive is the use of the feet. Standing alongside and sometimes over the body, the therapist works with body weight rather than muscular effort alone — creating a pressure that is both powerful and profoundly gentle. Fascia softens, joints release, and the nervous system settles into a rare stillness.\n\nEach session follows the natural flow of prana — life energy — moving along the body\'s channels to release tension held not just in muscle, but in memory and emotion. You leave feeling not only relaxed, but reorganised. More yourself.',
     },
     pt: {
       name: 'Método Kusum Modak',
       subtitle: 'Método Exclusivo',
       description:
-        'Esta prática combina princípios ayurvédicos, posturas de yoga assistidas, respiração consciente e toque profundo e contínuo. A sessão é dinâmica, enraizante e profundamente restauradora.\n\nUm dos seus aspetos mais distintivos é o uso dos pés — criando uma experiência única que frequentemente desperta curiosidade e surpresa. Cada sessão é um diálogo entre corpos, respiração e presença.',
+        'Desenvolvido por Kusum Modak — aluna direta do mestre de yoga B.K.S. Iyengar — este método entrelaça o trabalho corporal ayurvédico, posturas de yoga assistidas, respiração consciente e longas passagens ininterruptas numa experiência profundamente integrativa.\n\nO que o torna verdadeiramente singular é o uso dos pés. Trabalhando ao lado e por vezes sobre o corpo, a terapeuta utiliza o peso do corpo em vez apenas da força muscular — criando uma pressão que é simultaneamente poderosa e profundamente gentil. A fáscia amolece, as articulações libertam-se e o sistema nervoso assenta numa quietude rara.\n\nCada sessão segue o fluxo natural do prana — energia vital — movendo-se pelos canais do corpo para libertar a tensão acumulada não apenas nos músculos, mas também na memória e nas emoções. Sai sentindo-se não só relaxada, mas reorganizada. Mais você.',
     },
   },
 ];
@@ -289,6 +291,7 @@ export interface GalleryItem {
   src: string;
   span: boolean;
   gradient: string;
+  placeholder?: boolean;
   en: { alt: string; caption: string };
   pt: { alt: string; caption: string };
 }
@@ -299,47 +302,49 @@ export const galleryItems: GalleryItem[] = [
     src: '/images/gallery/IMG_5117.PNG',
     span: true,
     gradient: 'from-stone-700 via-stone-600 to-amber-800',
-    en: { alt: 'Cosy massage room', caption: 'Peaceful Environment' },
-    pt: { alt: 'Sala de massagem aconchegante', caption: 'Ambiente Tranquilo' },
+    en: { alt: 'Massage session', caption: 'The Session' },
+    pt: { alt: 'Sessão de massagem', caption: 'A Sessão' },
   },
   {
     id: 'gallery-2',
     src: '/images/gallery/IMG_5749.PNG',
     span: false,
     gradient: 'from-amber-800 via-orange-700 to-stone-700',
-    en: { alt: 'Hot stones and essential oils', caption: 'Hot Stone Treatment' },
-    pt: { alt: 'Pedras quentes e óleos essenciais', caption: 'Pedras Quentes' },
+    en: { alt: 'Bodywork detail', caption: 'Presence & Touch' },
+    pt: { alt: 'Detalhe de trabalho corporal', caption: 'Presença & Toque' },
   },
   {
     id: 'gallery-3',
     src: '/images/gallery/IMG_5752.PNG',
     span: false,
-    gradient: 'from-sage-700 via-sage-600 to-stone-700',
-    en: { alt: 'Lymphatic drainage session', caption: 'Lymphatic Drainage' },
-    pt: { alt: 'Sessão de drenagem linfática', caption: 'Drenagem Linfática' },
+    gradient: 'from-stone-600 via-stone-500 to-amber-700',
+    en: { alt: 'Session atmosphere', caption: 'Deep Stillness' },
+    pt: { alt: 'Atmosfera da sessão', caption: 'Quietude Profunda' },
   },
   {
     id: 'gallery-4',
     src: '/images/gallery/IMG_5755.PNG',
     span: false,
     gradient: 'from-amber-700 via-yellow-700 to-orange-800',
-    en: { alt: 'Premium essential oils', caption: 'Aromatherapy' },
-    pt: { alt: 'Óleos essenciais premium', caption: 'Aromaterapia' },
+    en: { alt: 'The practice', caption: 'The Practice' },
+    pt: { alt: 'A prática', caption: 'A Prática' },
   },
   {
     id: 'gallery-5',
-    src: '/images/gallery/IMG_5117.PNG',
+    src: '',
     span: true,
-    gradient: 'from-stone-800 via-sage-700 to-stone-700',
-    en: { alt: 'Relaxation session', caption: 'Deep Relaxation' },
-    pt: { alt: 'Sessão de relaxamento', caption: 'Relaxamento Profundo' },
+    placeholder: true,
+    gradient: 'from-stone-800 via-stone-700 to-stone-800',
+    en: { alt: 'Coming soon', caption: 'Coming Soon' },
+    pt: { alt: 'Em breve', caption: 'Em Breve' },
   },
   {
     id: 'gallery-6',
-    src: '/images/gallery/IMG_5749.PNG',
+    src: '',
     span: false,
-    gradient: 'from-stone-600 via-amber-700 to-stone-800',
-    en: { alt: 'Towels and preparation', caption: 'Thoughtful Details' },
-    pt: { alt: 'Toalhas e preparação', caption: 'Detalhes com Carinho' },
+    placeholder: true,
+    gradient: 'from-stone-800 via-stone-700 to-stone-800',
+    en: { alt: 'Coming soon', caption: 'Coming Soon' },
+    pt: { alt: 'Em breve', caption: 'Em Breve' },
   },
 ];

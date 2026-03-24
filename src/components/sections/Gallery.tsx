@@ -38,34 +38,36 @@ export default function Gallery() {
                 {/* Gradient background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
 
-                {/* Actual image */}
-                {!failedImages.has(item.id) && (
-                  <img
-                    src={asset(item.src)}
-                    alt={label.alt}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
-                  />
-                )}
-
-                {/* Placeholder when no image */}
-                {failedImages.has(item.id) && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white/40 gap-2">
-                    <span className="text-4xl">🖼</span>
-                    <span className="text-xs font-medium tracking-widest uppercase text-center px-4">{item.id}.jpg</span>
+                {item.placeholder ? (
+                  /* Coming-soon slot */
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 border-2 border-dashed border-white/10 rounded-xl">
+                    <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/30 text-xl">+</span>
+                    <span className="text-white/25 text-xs tracking-widest uppercase">{label.caption}</span>
                   </div>
+                ) : (
+                  <>
+                    {/* Actual image */}
+                    {!failedImages.has(item.id) && (
+                      <img
+                        src={asset(item.src)}
+                        alt={label.alt}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
+                      />
+                    )}
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300" />
+
+                    {/* Caption */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white font-serif text-sm font-medium">{label.caption}</p>
+                    </div>
+
+                    {/* Gold border on hover */}
+                    <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-gold-400/60 transition-all duration-300" />
+                  </>
                 )}
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300" />
-
-                {/* Caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white font-serif text-sm font-medium">{label.caption}</p>
-                </div>
-
-                {/* Gold border on hover */}
-                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-gold-400/60 transition-all duration-300" />
               </motion.div>
             );
           })}
