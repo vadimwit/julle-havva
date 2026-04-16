@@ -39,12 +39,12 @@ export default function Contact() {
   };
 
   const inputClass =
-    'w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-stone-700 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold-400/50 focus:border-gold-400 transition-all duration-200 text-sm';
+    'w-full px-4 py-3 rounded-xl border border-plum-600/60 bg-plum-900/80 text-stone-700 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-gold-600/30 focus:border-gold-600/50 transition-all duration-200 text-sm';
 
   const closedLabel = lang === 'en' ? 'Closed' : 'Encerrado';
 
   return (
-    <section id="contact" className="section-padding bg-cream-50">
+    <section id="contact" className="section-padding bg-cream-50 ritual-glow">
       <div className="container-max">
         <SectionTitle title={t.title} subtitle={t.subtitle} />
 
@@ -58,10 +58,10 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
           >
             {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-16 bg-white rounded-3xl shadow-sm">
-                <HiCheckCircle className="text-green-500 mb-4" size={56} />
+              <div className="h-full flex flex-col items-center justify-center text-center py-16 bg-plum-800/60 rounded-3xl border border-plum-700/40">
+                <HiCheckCircle className="text-gold-400 mb-4" size={56} />
                 <h3 className="font-serif text-2xl text-stone-800 font-semibold mb-3">{t.success.heading}</h3>
-                <p className="text-stone-500 max-w-sm leading-relaxed mb-6">{t.success.body}</p>
+                <p className="font-ritual italic text-stone-500 max-w-sm leading-relaxed mb-6 text-lg">{t.success.body}</p>
                 <button
                   onClick={() => { setSubmitted(false); setForm(initialForm); }}
                   className="btn-outline text-sm"
@@ -70,15 +70,15 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-sm p-8 space-y-5">
+              <form onSubmit={handleSubmit} className="bg-plum-800/60 rounded-3xl border border-plum-700/40 p-8 space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-medium text-stone-500 mb-1.5 uppercase tracking-wide">{t.form.nameLabel}</label>
+                    <label className="block text-xs font-medium text-stone-400 mb-1.5 uppercase tracking-wide">{t.form.nameLabel}</label>
                     <input type="text" name="name" required value={form.name} onChange={handleChange}
                       placeholder={t.form.namePlaceholder} className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-stone-500 mb-1.5 uppercase tracking-wide">{t.form.emailLabel}</label>
+                    <label className="block text-xs font-medium text-stone-400 mb-1.5 uppercase tracking-wide">{t.form.emailLabel}</label>
                     <input type="email" name="email" required value={form.email} onChange={handleChange}
                       placeholder={t.form.emailPlaceholder} className={inputClass} />
                   </div>
@@ -86,12 +86,12 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-medium text-stone-500 mb-1.5 uppercase tracking-wide">{t.form.phoneLabel}</label>
+                    <label className="block text-xs font-medium text-stone-400 mb-1.5 uppercase tracking-wide">{t.form.phoneLabel}</label>
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange}
                       placeholder={t.form.phonePlaceholder} className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-stone-500 mb-1.5 uppercase tracking-wide">{t.form.serviceLabel}</label>
+                    <label className="block text-xs font-medium text-stone-400 mb-1.5 uppercase tracking-wide">{t.form.serviceLabel}</label>
                     <select name="service" value={form.service} onChange={handleChange} className={inputClass}>
                       <option value="">{t.form.servicePlaceholder}</option>
                       {services.map((s) => (
@@ -103,7 +103,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-stone-500 mb-1.5 uppercase tracking-wide">{t.form.messageLabel}</label>
+                  <label className="block text-xs font-medium text-stone-400 mb-1.5 uppercase tracking-wide">{t.form.messageLabel}</label>
                   <textarea name="message" value={form.message} onChange={handleChange} rows={4}
                     placeholder={t.form.messagePlaceholder} className={`${inputClass} resize-none`} />
                 </div>
@@ -130,11 +130,11 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="space-y-8"
           >
-            <div className="bg-white rounded-3xl shadow-sm p-8 space-y-5">
+            <div className="bg-plum-800/60 rounded-3xl border border-plum-700/40 p-8 space-y-5">
               <h3 className="font-serif text-xl font-semibold text-stone-800 mb-6">{t.info.heading}</h3>
 
               <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-4 group">
-                <div className="w-11 h-11 rounded-full bg-gold-100 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300">
+                <div className="w-11 h-11 rounded-full bg-plum-700/50 flex items-center justify-center text-gold-400 group-hover:bg-gold-600 group-hover:text-white transition-all duration-300">
                   <HiPhone size={18} />
                 </div>
                 <div>
@@ -144,7 +144,7 @@ export default function Contact() {
               </a>
 
               <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                <div className="w-11 h-11 rounded-full bg-green-900/40 flex items-center justify-center text-green-400 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                   <FaWhatsapp size={18} />
                 </div>
                 <div>
@@ -154,7 +154,7 @@ export default function Contact() {
               </a>
 
               <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-4 group">
-                <div className="w-11 h-11 rounded-full bg-gold-100 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-white transition-all duration-300">
+                <div className="w-11 h-11 rounded-full bg-plum-700/50 flex items-center justify-center text-gold-400 group-hover:bg-gold-600 group-hover:text-white transition-all duration-300">
                   <HiMail size={18} />
                 </div>
                 <div>
@@ -163,18 +163,32 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-sage-100 flex items-center justify-center text-sage-600">
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-plum-700/50 flex items-center justify-center text-gold-400 shrink-0 mt-0.5">
                   <HiLocationMarker size={18} />
                 </div>
-                <div>
-                  <p className="text-xs text-stone-400 uppercase tracking-wide">{t.info.location}</p>
-                  <p className="text-stone-700 font-medium text-sm">{siteConfig.address}</p>
+                <div className="flex-1">
+                  <p className="text-xs text-stone-400 uppercase tracking-wide mb-2">{t.info.location}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {siteConfig.locations.map((loc) => (
+                      <span
+                        key={loc}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-blush-100 text-stone-700 text-xs font-medium rounded-full border border-blush-200"
+                      >
+                        🇵🇹 {loc}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-stone-400 text-xs leading-relaxed italic">
+                    {lang === 'en'
+                      ? 'Also available at your location upon request ⁓forest bathing, outdoor spaces, retreats & private settings welcome.'
+                      : 'Disponível também na sua localização a pedido ⁓banhos de floresta, espaços ao ar livre, retiros e ambientes privados são bem-vindos.'}
+                  </p>
                 </div>
               </div>
 
               <a href={siteConfig.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-11 h-11 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">
+                <div className="w-11 h-11 rounded-full bg-plum-700/50 flex items-center justify-center text-amber-400 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
                   <FaInstagram size={18} />
                 </div>
                 <div>
@@ -185,16 +199,16 @@ export default function Contact() {
             </div>
 
             {/* Opening hours */}
-            <div className="bg-white rounded-3xl shadow-sm p-8">
+            <div className="bg-plum-800/60 rounded-3xl border border-plum-700/40 p-8">
               <div className="flex items-center gap-3 mb-5">
-                <HiClock className="text-gold-500" size={20} />
+                <HiClock className="text-mauve-500" size={20} />
                 <h3 className="font-serif text-xl font-semibold text-stone-800">{t.info.hoursHeading}</h3>
               </div>
               <ul className="space-y-3">
                 {tHours.map((h) => (
-                  <li key={h.day} className="flex justify-between items-center py-2 border-b border-stone-50 last:border-0">
+                  <li key={h.day} className="flex justify-between items-center py-2 border-b border-rose-50 last:border-0">
                     <span className="text-stone-600 text-sm">{h.day}</span>
-                    <span className={`text-sm font-medium ${h.hours === closedLabel ? 'text-stone-300' : 'text-gold-500'}`}>
+                    <span className={`text-sm font-medium ${h.hours === closedLabel ? 'text-stone-300' : 'text-mauve-500'}`}>
                       {h.hours}
                     </span>
                   </li>
@@ -202,18 +216,6 @@ export default function Contact() {
               </ul>
             </div>
 
-            {/* Map placeholder */}
-            <div className="bg-stone-100 rounded-3xl overflow-hidden h-48 flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-stone-200">
-              <HiLocationMarker className="text-stone-300 mb-2" size={32} />
-              <p className="text-stone-400 text-sm font-medium">{t.info.mapTitle}</p>
-              <p className="text-stone-300 text-xs mt-1 max-w-xs">
-                {t.info.mapBody}{' '}
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
-                  className="text-gold-400 hover:underline">
-                  {t.info.mapLink}
-                </a>
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

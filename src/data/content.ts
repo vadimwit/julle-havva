@@ -6,7 +6,8 @@ export const siteConfig = {
   phone: '+351 939 140 245',
   whatsapp: 'https://wa.me/351939140245?text=Hello!%20I%20would%20like%20to%20book%20a%20massage%20session.',
   email: 'julle.havva@gmail.com',
-  address: 'Algarve, Portugal',
+  address: 'Western Algarve, Portugal',
+  locations: ['Lagos', 'Vila do Bispo', 'Aljezur', 'Wider Portugal'],
   instagram: 'https://www.instagram.com/jullehavva_massoterapia',
   instagramHandle: '@jullehavva_massoterapia',
 };
@@ -20,8 +21,9 @@ export const aboutContent = {
     subheading: 'About Me',
     bio: [
       'From a very young age, touch has been part of who I am. I always felt a natural ease and confidence when caring for bodies, as if my hands already knew where to go. Over the years, this intuitive gift became a path.',
-      'Through bodywork, I discovered not only a profession, but a way of connecting deeply with people, cultures and places. Massage gave me wings — allowing me to travel, live in different countries and build meaningful connections through presence and care.',
-      'I am not only a body therapist. I am also a textile artist, working with my hands to create, weave and give form. I believe we are made of many layers, and my work reflects this wholeness: touch, listening, creativity and respect.',
+      'I am originally from the northeast of Brazil and through bodywork, I discovered not only a profession, but a way of connecting deeply with people, cultures and places. Massage gave me wings, allowing me to travel, live in different countries and build meaningful connections through presence and care.',
+      'Alongside this, I am also a textile artist. In both practices, I feel connected to something ancestral ⁓ a way of creating, caring and weaving with attention and intention.',
+      'This work, for me, is a meeting point between touch, breath and awareness. A space where the body can soften, open, and return to itself.',
     ],
     certifications: [
       'Certified Massage Therapist',
@@ -30,9 +32,8 @@ export const aboutContent = {
     ],
     stats: [
       { value: '3+', label: 'Years of Experience' },
-      { value: '500+', label: 'Happy Clients' },
-      { value: '3+', label: 'Countries Lived In' },
-      { value: '100%', label: 'Presence & Care' },
+      { value: '800+', label: 'Happy Clients' },
+      { value: '4+', label: 'Countries Lived In' },
     ],
   },
   pt: {
@@ -40,19 +41,19 @@ export const aboutContent = {
     subheading: 'Sobre Mim',
     bio: [
       'Desde muito nova, o toque faz parte de quem sou. Sempre senti uma facilidade e confiança naturais ao cuidar de corpos, como se as minhas mãos já soubessem para onde ir. Ao longo dos anos, este dom intuitivo tornou-se um caminho.',
-      'Através do trabalho corporal, descobri não apenas uma profissão, mas uma forma de me ligar profundamente a pessoas, culturas e lugares. A massagem deu-me asas — permitindo-me viajar, viver em diferentes países e construir ligações significativas através da presença e do cuidado.',
-      'Não sou apenas terapeuta corporal. Sou também artista têxtil, trabalhando com as minhas mãos para criar, tecer e dar forma. Acredito que somos feitos de muitas camadas, e o meu trabalho reflete esta totalidade: toque, escuta, criatividade e respeito.',
+      'Sou originalmente do nordeste do Brasil e, através do trabalho corporal, descobri não apenas uma profissão, mas uma forma de me ligar profundamente a pessoas, culturas e lugares. A massagem deu-me asas, permitindo-me viajar, viver em diferentes países e construir ligações significativas através da presença e do cuidado.',
+      'A par disso, sou também artista têxtil. Em ambas as práticas, sinto-me ligada a algo ancestral ⁓ uma forma de criar, cuidar e tecer com atenção e intenção.',
+      'Este trabalho é, para mim, um ponto de encontro entre o toque, a respiração e a consciência. Um espaço onde o corpo pode suavizar-se, abrir-se e regressar a si mesmo.',
     ],
     certifications: [
-      'Massoterapeuta Certificada – Certificação Europeia',
+      'Massoterapeuta Certificada',
       'Praticante do Método Kusum Mudak',
       'Formação em Bodywork Ayurvédico',
     ],
     stats: [
       { value: '3+', label: 'Anos de Experiência' },
-      { value: '500+', label: 'Clientes Satisfeitos' },
-      { value: '3+', label: 'Países Vividos' },
-      { value: '100%', label: 'Presença e Cuidado' },
+      { value: '800+', label: 'Clientes Satisfeitos' },
+      { value: '4+', label: 'Países Vividos' },
     ],
   },
 };
@@ -78,16 +79,16 @@ export const services: Service[] = [
     duration: '60 – 90 min',
     src: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80',
     en: {
-      name: 'Kusum Modak Method',
+      name: 'Kusum Modak Method\nAyurvedic Yoga Massage',
       subtitle: 'Signature Method',
       description:
-        'Developed by Kusum Modak — a direct student of yoga master B.K.S. Iyengar — this method weaves together Ayurvedic bodywork, assisted yoga postures, conscious breathing and long, uninterrupted strokes into a single, deeply integrative experience.\n\nWhat makes it truly distinctive is the use of the feet. Standing alongside and sometimes over the body, the therapist works with body weight rather than muscular effort alone — creating a pressure that is both powerful and profoundly gentle. Fascia softens, joints release, and the nervous system settles into a rare stillness.\n\nEach session follows the natural flow of prana — life energy — moving along the body\'s channels to release tension held not just in muscle, but in memory and emotion. You leave feeling not only relaxed, but reorganised. More yourself.',
+        'A dialogue between presence and care, where the body is invited to release, and awareness naturally unfolds.\n\nThe Kusum Modak Method ⁓ Ayurvedic Yoga Massage ⁓ blends traditional Indian massage with yoga-inspired postures, creating a deeply integrative therapeutic experience. Recognised worldwide within the fields of health and well-being, it is considered one of the most complete bodywork practices.\n\nThrough slow, deep touches, using natural oils and a therapeutic powder, the session combines slides, stretches and pressure applied with hands and feet. This approach stimulates circulation, releases muscular tension and creates space in the joints, preparing the body for deeper opening.\n\nWith more than 120 techniques, each session adapts to the needs of the individual ⁓ working not only on the physical body, but also supporting mental clarity and emotional balance.\n\nSupported by conscious breathing, the experience invites a state of deep relaxation where the mind quiets, the body softens, and a natural sense of well-being emerges.',
     },
     pt: {
-      name: 'Método Kusum Modak',
+      name: 'Método Kusum Modak\nMassagem de Yoga Ayurvédico',
       subtitle: 'Método Exclusivo',
       description:
-        'Desenvolvido por Kusum Modak — aluna direta do mestre de yoga B.K.S. Iyengar — este método entrelaça o trabalho corporal ayurvédico, posturas de yoga assistidas, respiração consciente e longas passagens ininterruptas numa experiência profundamente integrativa.\n\nO que o torna verdadeiramente singular é o uso dos pés. Trabalhando ao lado e por vezes sobre o corpo, a terapeuta utiliza o peso do corpo em vez apenas da força muscular — criando uma pressão que é simultaneamente poderosa e profundamente gentil. A fáscia amolece, as articulações libertam-se e o sistema nervoso assenta numa quietude rara.\n\nCada sessão segue o fluxo natural do prana — energia vital — movendo-se pelos canais do corpo para libertar a tensão acumulada não apenas nos músculos, mas também na memória e nas emoções. Sai sentindo-se não só relaxada, mas reorganizada. Mais você.',
+        'Um diálogo entre presença e cuidado, onde o corpo é convidado a libertar-se, e a consciência se desdobra naturalmente.\n\nO Método Kusum Modak ⁓ Massagem de Yoga Ayurvédico ⁓ combina a massagem indiana tradicional com posturas inspiradas no yoga, criando uma experiência terapêutica profundamente integrativa. Reconhecido mundialmente nas áreas da saúde e bem-estar, é considerado uma das práticas de trabalho corporal mais completas.\n\nAtravés de toques lentos e profundos, utilizando óleos naturais e um pó terapêutico, a sessão combina deslizes, alongamentos e pressão aplicados com mãos e pés. Esta abordagem estimula a circulação, liberta a tensão muscular e cria espaço nas articulações, preparando o corpo para uma abertura mais profunda.\n\nCom mais de 120 técnicas, cada sessão adapta-se às necessidades do indivíduo ⁓ trabalhando não apenas no corpo físico, mas também apoiando a clareza mental e o equilíbrio emocional.\n\nApoiada pela respiração consciente, a experiência convida a um estado de profunda relaxação onde a mente se aquieta, o corpo suaviza, e uma sensação natural de bem-estar emerge.',
     },
   },
 ];
@@ -281,6 +282,51 @@ export const testimonials: Testimonial[] = [
       text: 'A Julle tem um método único, e absolutamente fenomenal. Quando entras nesse processo é uma jornada que te faz derreter num espaço de relaxamento. Ela colocou definitivamente muito amor e cuidado nesta prática. Sem dúvida recomendo!',
     },
   },
+  {
+    id: '5',
+    initial: 'M',
+    rating: 5,
+    en: {
+      name: 'Miriam Stark',
+      role: 'Google Review',
+      text: 'Julle is an old soul in the body of a beautiful, young, and strong woman. She holds a powerful gift that can guide you on a deep and opening journey into the parts of your soul and heart that long to be seen and cared for with love.\n\nHer technique is incredibly versatile, allowing her to mobilize, stimulate, and nourish the entire body within just 90 minutes. There is not a single part of the body that doesn\'t feel rejuvenated, alive, and deeply relaxed afterwards.\n\nI wholeheartedly recommend working with this beautiful human being.',
+    },
+    pt: {
+      name: 'Miriam Stark',
+      role: 'Avaliação Google',
+      text: 'A Julle é uma alma antiga no corpo de uma mulher bela, jovem e forte. Ela possui um dom poderoso que pode guiá-la numa jornada profunda e aberta para as partes da sua alma e coração que anseiam ser vistas e cuidadas com amor.\n\nA sua técnica é incrivelmente versátil, permitindo-lhe mobilizar, estimular e nutrir todo o corpo em apenas 90 minutos. Não há uma única parte do corpo que não se sinta rejuvenescida, viva e profundamente relaxada depois.\n\nRecomendo de todo o coração trabalhar com este ser humano maravilhoso.',
+    },
+  },
+  {
+    id: '6',
+    initial: 'A',
+    rating: 5,
+    en: {
+      name: 'Aric Mekhaelov',
+      role: 'Google Review',
+      text: 'Amazing!! Professional!! Good energy!!\n\nDefinitely something new and very relaxing.\n\nJulie is caring, she wants to help with her knowledge and dedication!\n\nThank you, I had a very interesting experience. Thank you Julle.',
+    },
+    pt: {
+      name: 'Aric Mekhaelov',
+      role: 'Avaliação Google',
+      text: 'Incrível!! Profissional!! Boa energia!!\n\nDefinitivamente algo novo e muito relaxante.\n\nA Julie é atenciosa, quer ajudar com o seu conhecimento e dedicação!\n\nObrigado, tive uma experiência muito interessante. Obrigado Julle.',
+    },
+  },
+  {
+    id: '7',
+    initial: 'V',
+    rating: 5,
+    en: {
+      name: 'Verena Krammer',
+      role: 'Google Review',
+      text: 'Very good and magical massage! Thank you so much Julle. You opened me and touched me deeply.',
+    },
+    pt: {
+      name: 'Verena Krammer',
+      role: 'Avaliação Google',
+      text: 'Massagem muito boa e mágica! Muito obrigado Julle. Abriste-me e tocaste-me profundamente.',
+    },
+  },
 ];
 
 // ─────────────────────────────────────────────
@@ -310,16 +356,16 @@ export const galleryItems: GalleryItem[] = [
     src: '/images/gallery/IMG_5749.PNG',
     span: false,
     gradient: 'from-amber-800 via-orange-700 to-stone-700',
-    en: { alt: 'Bodywork detail', caption: 'Presence & Touch' },
-    pt: { alt: 'Detalhe de trabalho corporal', caption: 'Presença & Toque' },
+    en: { alt: 'Presence & touch', caption: 'Presence & Touch' },
+    pt: { alt: 'Presença e toque', caption: 'Presença & Toque' },
   },
   {
     id: 'gallery-3',
     src: '/images/gallery/IMG_5752.PNG',
     span: false,
     gradient: 'from-stone-600 via-stone-500 to-amber-700',
-    en: { alt: 'Session atmosphere', caption: 'Deep Stillness' },
-    pt: { alt: 'Atmosfera da sessão', caption: 'Quietude Profunda' },
+    en: { alt: 'Deep stillness', caption: 'Deep Stillness' },
+    pt: { alt: 'Quietude profunda', caption: 'Quietude Profunda' },
   },
   {
     id: 'gallery-4',
@@ -331,20 +377,50 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 'gallery-5',
-    src: '',
-    span: true,
-    placeholder: true,
-    gradient: 'from-stone-800 via-stone-700 to-stone-800',
-    en: { alt: 'Coming soon', caption: 'Coming Soon' },
-    pt: { alt: 'Em breve', caption: 'Em Breve' },
+    src: '/images/gallery/DSC_8250.jpeg',
+    span: false,
+    gradient: 'from-stone-700 via-amber-900 to-stone-800',
+    en: { alt: 'A moment of release', caption: 'Release' },
+    pt: { alt: 'Um momento de libertação', caption: 'Libertação' },
   },
   {
     id: 'gallery-6',
-    src: '',
+    src: '/images/gallery/IMG_1687.PNG',
     span: false,
-    placeholder: true,
-    gradient: 'from-stone-800 via-stone-700 to-stone-800',
-    en: { alt: 'Coming soon', caption: 'Coming Soon' },
-    pt: { alt: 'Em breve', caption: 'Em Breve' },
+    gradient: 'from-amber-900 via-stone-700 to-amber-800',
+    en: { alt: 'The space', caption: 'The Space' },
+    pt: { alt: 'O espaço', caption: 'O Espaço' },
+  },
+  {
+    id: 'gallery-7',
+    src: '/images/gallery/IMG_6927.PNG',
+    span: false,
+    gradient: 'from-stone-800 via-amber-800 to-stone-700',
+    en: { alt: 'Bodywork flow', caption: 'Flow' },
+    pt: { alt: 'Fluxo corporal', caption: 'Fluxo' },
+  },
+  {
+    id: 'gallery-8',
+    src: '/images/gallery/IMG_6931.PNG',
+    span: true,
+    gradient: 'from-amber-800 via-stone-700 to-amber-900',
+    en: { alt: 'Touch & breath', caption: 'Touch & Breath' },
+    pt: { alt: 'Toque e respiração', caption: 'Toque & Respiração' },
+  },
+  {
+    id: 'gallery-9',
+    src: '/images/gallery/IMG_9144.PNG',
+    span: false,
+    gradient: 'from-stone-700 via-stone-600 to-stone-800',
+    en: { alt: 'Inner stillness', caption: 'Inner Stillness' },
+    pt: { alt: 'Quietude interior', caption: 'Quietude Interior' },
+  },
+  {
+    id: 'gallery-10',
+    src: '/images/gallery/IMG_9739.JPG',
+    span: false,
+    gradient: 'from-amber-900 via-amber-800 to-stone-800',
+    en: { alt: 'Return to yourself', caption: 'Return' },
+    pt: { alt: 'Regresso a si', caption: 'Regresso' },
   },
 ];

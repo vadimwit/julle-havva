@@ -13,24 +13,24 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar — dark track, amber thumb */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-cream-100;
+    background: #1E1C12;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-gold-400 rounded-full;
+    @apply bg-mauve-400 rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold-500;
+    @apply bg-mauve-300;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
+    @apply py-14 sm:py-20 px-4 sm:px-6 lg:px-8;
   }
 
   .container-max {
@@ -42,10 +42,43 @@
   }
 
   .btn-outline {
-    @apply px-8 py-3 border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white font-medium rounded-full transition-all duration-300;
+    @apply px-8 py-3 border-2 border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-white font-medium rounded-full transition-all duration-300;
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-gold-600 to-gold-400 bg-clip-text text-transparent;
+  }
+
+  /*
+   * Ritual ambient glow — warm gold radial for dark sections.
+   */
+  .ritual-glow {
+    position: relative;
+  }
+  .ritual-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      rgba(180, 150, 50, 0.10) 0%,
+      transparent 65%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ritual-glow > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /*
+   * Ritual petal background — organic warm gold radial washes.
+   */
+  .ritual-petal-bg {
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(180, 150, 60, 0.10) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(160, 130, 50, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 5%,  rgba(200, 170, 80, 0.07) 0%, transparent 30%);
   }
 }

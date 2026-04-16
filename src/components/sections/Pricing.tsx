@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { HiCheck } from 'react-icons/hi';
 import { Link } from 'react-scroll';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
@@ -15,7 +14,7 @@ export default function Pricing() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="pricing" className="section-padding bg-cream-100">
+    <section id="pricing" className="section-padding bg-rose-50">
       <div className="container-max" ref={ref}>
         <SectionTitle title={t.title} subtitle={t.subtitle} />
 
@@ -30,8 +29,8 @@ export default function Pricing() {
                 transition={{ duration: 0.6, delay: i * 0.12, ease: 'easeOut' }}
                 className={`relative rounded-2xl flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl ${
                   tier.popular
-                    ? 'bg-stone-900 border-2 border-gold-500 shadow-xl md:-mt-4 md:mb-4'
-                    : 'bg-white border border-stone-100 shadow-sm'
+                    ? 'bg-plum-900 border-2 border-gold-500 shadow-xl md:-mt-4 md:mb-4'
+                    : 'bg-white/90 border border-rose-100 shadow-sm'
                 }`}
               >
                 {/* Popular badge */}
@@ -44,19 +43,27 @@ export default function Pricing() {
                 )}
 
                 <div className={`p-8 ${tier.popular ? 'pt-12' : ''}`}>
-                  <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${tier.popular ? 'text-gold-400' : 'text-gold-500'}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${
+                    tier.popular ? 'text-gold-400' : 'text-mauve-500'
+                  }`}>
                     {p.name}
                   </p>
-                  <h3 className={`font-serif text-2xl font-semibold mb-1 ${tier.popular ? 'text-white' : 'text-stone-800'}`}>
+                  <h3 className={`font-serif text-2xl font-semibold mb-1 ${
+                    tier.popular ? 'text-white' : 'text-stone-800'
+                  }`}>
                     {p.subtitle}
                   </h3>
-                  <p className={`text-sm mb-6 leading-relaxed ${tier.popular ? 'text-stone-400' : 'text-stone-400'}`}>
+                  <p className={`font-ritual italic text-sm mb-6 leading-relaxed font-light ${
+                    tier.popular ? 'text-stone-400' : 'text-stone-500'
+                  }`}>
                     {p.description}
                   </p>
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className={`font-serif text-4xl font-bold ${tier.popular ? 'text-gold-400' : 'text-stone-800'}`}>
+                    <span className={`font-serif text-4xl font-bold ${
+                      tier.popular ? 'text-gold-400' : 'text-stone-800'
+                    }`}>
                       {tier.price}
                     </span>
                   </div>
@@ -65,10 +72,14 @@ export default function Pricing() {
                   <ul className="space-y-3 mb-8">
                     {p.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${tier.popular ? 'bg-gold-500/20' : 'bg-gold-100'}`}>
-                          <HiCheck className={tier.popular ? 'text-gold-400' : 'text-gold-500'} size={12} />
-                        </div>
-                        <span className={`text-sm ${tier.popular ? 'text-stone-300' : 'text-stone-500'}`}>
+                        <span className={`shrink-0 mt-1 text-xs ${
+                          tier.popular ? 'text-mauve-300' : 'text-mauve-400'
+                        }`}>
+                          ✦
+                        </span>
+                        <span className={`text-sm ${
+                          tier.popular ? 'text-stone-300' : 'text-stone-500'
+                        }`}>
                           {feature}
                         </span>
                       </li>
@@ -84,7 +95,7 @@ export default function Pricing() {
                     className={`block w-full text-center py-3.5 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer ${
                       tier.popular
                         ? 'bg-gold-500 hover:bg-gold-400 text-white shadow-lg hover:-translate-y-0.5'
-                        : 'border-2 border-gold-400 text-gold-500 hover:bg-gold-500 hover:text-white'
+                        : 'border-2 border-mauve-400 text-mauve-500 hover:bg-mauve-500 hover:text-white'
                     }`}
                   >
                     {p.cta}
@@ -96,7 +107,7 @@ export default function Pricing() {
         </div>
 
         <motion.p
-          className="text-center text-stone-400 text-sm mt-10"
+          className="text-center font-ritual italic text-stone-400 text-base mt-10"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}

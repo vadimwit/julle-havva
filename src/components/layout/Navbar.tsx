@@ -29,7 +29,7 @@ export default function Navbar() {
 
   const navBg = scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent';
   const textColor = scrolled ? 'text-stone-700' : 'text-white';
-  const hoverColor = scrolled ? 'hover:text-gold-500' : 'hover:text-gold-300';
+  const hoverColor = scrolled ? 'hover:text-mauve-500' : 'hover:text-gold-300';
 
   return (
     <>
@@ -57,7 +57,7 @@ export default function Navbar() {
                   duration={600}
                   offset={-80}
                   spy
-                  activeClass="!text-gold-500"
+                  activeClass="!text-mauve-500"
                   className={`text-sm font-medium cursor-pointer transition-colors duration-300 ${textColor} ${hoverColor}`}
                 >
                   {link.label}
@@ -65,17 +65,17 @@ export default function Navbar() {
               ))}
 
               {/* Language toggle */}
-              <div className={`flex items-center gap-1 text-xs font-semibold border rounded-full px-2.5 py-1 transition-colors duration-300 ${scrolled ? 'border-stone-200' : 'border-white/30'}`}>
+              <div className={`flex items-center gap-1 text-xs font-semibold border rounded-full px-2.5 py-1 transition-colors duration-300 ${scrolled ? 'border-rose-200' : 'border-white/30'}`}>
                 <button
                   onClick={() => setLang('en')}
-                  className={`transition-colors duration-200 ${lang === 'en' ? 'text-gold-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
+                  className={`transition-colors duration-200 ${lang === 'en' ? 'text-mauve-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
                 >
                   EN
                 </button>
-                <span className={scrolled ? 'text-stone-200' : 'text-white/30'}>|</span>
+                <span className={scrolled ? 'text-rose-200' : 'text-white/30'}>|</span>
                 <button
                   onClick={() => setLang('pt')}
-                  className={`transition-colors duration-200 ${lang === 'pt' ? 'text-gold-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
+                  className={`transition-colors duration-200 ${lang === 'pt' ? 'text-mauve-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
                 >
                   PT
                 </button>
@@ -94,7 +94,11 @@ export default function Navbar() {
 
             {/* Mobile Hamburger */}
             <button
-              className={`md:hidden p-2 rounded-lg transition-colors ${textColor}`}
+              className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
+                scrolled
+                  ? 'text-stone-700 bg-transparent'
+                  : 'text-white bg-plum-900/40 backdrop-blur-sm border border-white/10'
+              }`}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={t.openMenu}
             >
@@ -104,7 +108,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — deep plum */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -112,17 +116,30 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-30 bg-stone-900/98 flex flex-col items-center justify-center gap-7 md:hidden"
+            className="fixed inset-0 z-30 bg-plum-900/98 flex flex-col items-center justify-center gap-7 md:hidden"
           >
+            {/* Ambient glow in mobile menu */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(160,80,120,0.12) 0%, transparent 70%)',
+              }}
+              aria-hidden="true"
+            />
+
             <button
-              className="absolute top-6 right-6 text-white p-2"
+              className="absolute top-6 right-6 text-white/60 hover:text-white p-2 transition-colors"
               onClick={() => setMobileOpen(false)}
               aria-label={t.closeMenu}
             >
               <HiX size={28} />
             </button>
 
-            <span className="font-serif text-3xl text-gold-400 mb-2">{siteConfig.name}</span>
+            <span className="font-serif text-3xl text-gold-400 mb-2 relative z-10">{siteConfig.name}</span>
+            <p className="font-ritual italic text-mauve-400/60 text-sm tracking-widest relative z-10">
+              ☽ massage therapy ☾
+            </p>
 
             {navLinks.map((link, i) => (
               <motion.div
@@ -130,13 +147,14 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.07 }}
+                className="relative z-10"
               >
                 <Link
                   to={link.to}
                   smooth
                   duration={600}
                   offset={-80}
-                  className="text-white text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
+                  className="text-white/80 text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -145,17 +163,17 @@ export default function Navbar() {
             ))}
 
             {/* Mobile language toggle */}
-            <div className="flex items-center gap-3 text-sm font-semibold mt-2">
+            <div className="flex items-center gap-3 text-sm font-semibold mt-2 relative z-10">
               <button
                 onClick={() => setLang('en')}
-                className={lang === 'en' ? 'text-gold-400' : 'text-white/50'}
+                className={lang === 'en' ? 'text-mauve-300' : 'text-white/40'}
               >
                 EN
               </button>
               <span className="text-white/20">|</span>
               <button
                 onClick={() => setLang('pt')}
-                className={lang === 'pt' ? 'text-gold-400' : 'text-white/50'}
+                className={lang === 'pt' ? 'text-mauve-300' : 'text-white/40'}
               >
                 PT
               </button>
@@ -165,6 +183,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.07 }}
+              className="relative z-10"
             >
               <Link
                 to="contact"

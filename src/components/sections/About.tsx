@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { HiCheckCircle } from 'react-icons/hi';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { aboutContent } from '../../data/content';
@@ -25,7 +24,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="section-padding bg-cream-50">
+    <section id="about" className="section-padding bg-cream-50 ritual-glow">
       <div className="container-max" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -36,14 +35,16 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="absolute -top-6 -left-6 w-64 h-64 bg-gold-300/20 rounded-2xl z-0" />
-            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-sage-300/20 rounded-2xl z-0" />
+            {/* Organic blob decorators — dry leaf, brown, wine */}
+            <div className="absolute -top-10 -left-10 w-72 h-72 bg-amber-900/25 rounded-full z-0 blur-3xl" />
+            <div className="absolute -bottom-10 -right-10 w-56 h-56 bg-red-900/20 rounded-full z-0 blur-2xl" />
+            <div className="absolute top-1/2 -right-4 w-24 h-24 bg-yellow-900/20 rounded-full z-0 blur-xl" />
 
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-gold-200/60">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-rose-200/40">
               <img
                 src={asset('/images/about/julle.jpeg')}
                 alt="Julle Havva"
-                className="w-full h-[520px] object-cover"
+                className="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover"
                 onError={(e) => {
                   const el = e.currentTarget as HTMLImageElement;
                   if (!el.src.includes('IMG_5054')) {
@@ -53,21 +54,6 @@ export default function About() {
               />
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              className="absolute -bottom-4 left-8 z-20 bg-white rounded-xl shadow-xl px-5 py-4 flex items-center gap-3"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              <div className="w-10 h-10 rounded-full bg-gold-100 flex items-center justify-center">
-                <span className="text-gold-500 text-lg">✦</span>
-              </div>
-              <div>
-                <p className="text-stone-800 font-semibold text-sm">{t.badgeTitle}</p>
-                <p className="text-stone-400 text-xs">{t.badgeSub}</p>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Right: Content */}
@@ -77,8 +63,8 @@ export default function About() {
             animate={inView ? 'visible' : 'hidden'}
           >
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <span className="h-px w-10 bg-gold-500" />
-              <span className="text-gold-500 text-xs tracking-[0.25em] uppercase font-medium">
+              <span className="h-px w-10 bg-mauve-400/60" />
+              <span className="text-mauve-500 text-xs tracking-[0.25em] uppercase font-medium">
                 {content.subheading}
               </span>
             </motion.div>
@@ -102,13 +88,13 @@ export default function About() {
 
             {/* Certifications */}
             <motion.div variants={fadeUp} className="mt-6">
-              <h3 className="text-stone-700 font-semibold text-sm uppercase tracking-wider mb-4">
+              <h3 className="text-stone-600 font-semibold text-xs uppercase tracking-wider mb-4 font-sans">
                 {t.certsHeading}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {content.certifications.map((cert) => (
-                  <li key={cert} className="flex items-start gap-2 text-stone-500 text-sm">
-                    <HiCheckCircle className="text-gold-500 shrink-0 mt-0.5" size={16} />
+                  <li key={cert} className="flex items-start gap-2.5 text-stone-500 text-sm">
+                    <span className="text-mauve-400 shrink-0 mt-0.5 text-xs leading-5">✦</span>
                     <span>{cert}</span>
                   </li>
                 ))}
@@ -118,7 +104,7 @@ export default function About() {
             {/* Stats */}
             <motion.div
               variants={fadeUp}
-              className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-cream-200"
+              className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-blush-200/60"
             >
               {content.stats.map((stat) => (
                 <div key={stat.label} className="text-center">

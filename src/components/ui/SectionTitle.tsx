@@ -15,28 +15,44 @@ export default function SectionTitle({ title, subtitle, light = false }: Section
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.7, ease: 'easeOut' }}
     >
-      {/* Decorative line above */}
+      {/* Ornamental divider — ✦ flanked lines */}
       <div className="flex items-center justify-center gap-3 mb-4">
-        <span className={`block h-px w-12 ${light ? 'bg-gold-300' : 'bg-gold-500'}`} />
-        <span className={`text-xs tracking-[0.25em] uppercase font-medium ${light ? 'text-gold-300' : 'text-gold-500'}`}>
+        <span className={`block h-px w-10 ${light ? 'bg-gold-400/50' : 'bg-gold-500/50'}`} />
+        <span
+          className={`text-[9px] tracking-[0.4em] ${light ? 'text-gold-300' : 'text-gold-400'}`}
+          aria-hidden="true"
+        >
+          ✦
+        </span>
+        <span
+          className={`font-ritual italic text-[11px] tracking-[0.25em] font-light ${
+            light ? 'text-gold-300' : 'text-gold-500'
+          }`}
+        >
           Julle Havva
         </span>
-        <span className={`block h-px w-12 ${light ? 'bg-gold-300' : 'bg-gold-500'}`} />
+        <span
+          className={`text-[9px] tracking-[0.4em] ${light ? 'text-gold-300' : 'text-gold-400'}`}
+          aria-hidden="true"
+        >
+          ✦
+        </span>
+        <span className={`block h-px w-10 ${light ? 'bg-gold-400/50' : 'bg-gold-500/50'}`} />
       </div>
 
       {/* Main heading */}
       <h2
-        className={`font-serif text-4xl md:text-5xl font-semibold leading-tight ${
-          light ? 'text-cream-50' : 'text-stone-800'
+        className={`font-serif text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight ${
+          light ? 'text-stone-800' : 'text-stone-800'
         }`}
       >
         {title}
       </h2>
 
-      {/* Optional subtitle */}
+      {/* Subtitle rendered in Cormorant Garamond italic for ethereal feel */}
       {subtitle && (
         <p
-          className={`mt-4 text-lg max-w-2xl mx-auto leading-relaxed ${
+          className={`mt-4 sm:mt-5 font-ritual italic text-lg sm:text-xl font-light max-w-2xl mx-auto leading-relaxed ${
             light ? 'text-stone-300' : 'text-stone-500'
           }`}
         >

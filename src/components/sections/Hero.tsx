@@ -45,30 +45,39 @@ export default function Hero() {
         <source src={asset('/videos/hero/20240415_201327.mp4')} type="video/mp4" />
       </video>
 
-      {/* Minimal overlay — just enough contrast for text, barely touches the image */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/35 z-20" />
+      {/* Base overlay — minimal, preserves image quality */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/40 z-20" />
 
-      {/* Decorative lines */}
-      <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-gold-400/40 to-transparent hidden lg:block z-30" />
-      <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-transparent via-gold-400/40 to-transparent hidden lg:block z-30" />
+      {/* Ritual ambient glow — warm rose halo behind the text */}
+      <div
+        className="absolute inset-0 z-20 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 45% at 50% 58%, rgba(160,90,110,0.18) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Decorative vertical lines */}
+      <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-gold-400/30 to-transparent hidden lg:block z-30" />
+      <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-transparent via-gold-400/30 to-transparent hidden lg:block z-30" />
 
       {/* Content */}
       <div className="relative z-30 text-center px-4 sm:px-6 max-w-4xl mx-auto">
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
 
-          {/* Label */}
-          <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-8">
-            <span className="h-px w-10 bg-gold-400/70" />
-            <span className="text-gold-400 text-xs tracking-[0.35em] uppercase font-medium">
-              {lang === 'en' ? 'Certified Massage Therapist' : 'Massoterapeuta Certificada'}
+          {/* Label — with crescent moon ritual symbols */}
+          <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <span className="h-px w-6 sm:w-10 bg-gold-400/60" />
+            <span className="font-ritual italic text-gold-300 text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em]">
+              ☽&ensp;{lang === 'en' ? 'Kusum Modak Method' : 'Método Kusum Modak'}&ensp;☾
             </span>
-            <span className="h-px w-10 bg-gold-400/70" />
+            <span className="h-px w-6 sm:w-10 bg-gold-400/60" />
           </motion.div>
 
           {/* Heading */}
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-5xl sm:text-6xl md:text-7xl font-semibold text-white leading-tight"
+            className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-semibold text-white leading-tight"
           >
             {t.hero.heading1}
             <br />
@@ -78,7 +87,7 @@ export default function Hero() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="mt-6 text-stone-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light"
+            className="mt-4 sm:mt-6 font-ritual italic text-stone-300 text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light"
           >
             {t.hero.subtitle}
           </motion.p>
@@ -86,7 +95,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
               to="contact"
@@ -97,21 +106,12 @@ export default function Hero() {
             >
               {t.hero.bookBtn}
             </Link>
-            <Link
-              to="services"
-              smooth
-              duration={700}
-              offset={-80}
-              className="px-8 py-3 border-2 border-white/60 text-white hover:border-gold-400 hover:text-gold-400 font-medium rounded-full transition-all duration-300 cursor-pointer w-full sm:w-auto text-center text-base"
-            >
-              {t.hero.exploreBtn}
-            </Link>
           </motion.div>
 
           {/* Name branding */}
           <motion.p
             variants={itemVariants}
-            className="mt-10 font-serif text-gold-300/70 text-sm tracking-widest italic"
+            className="mt-10 font-ritual italic text-gold-300/60 text-base tracking-widest"
           >
             — {siteConfig.name}
           </motion.p>
@@ -126,13 +126,13 @@ export default function Hero() {
         transition={{ delay: 1.4, duration: 0.6 }}
       >
         <Link to="about" smooth duration={600} offset={-80}>
-          <span className="text-white/50 text-xs tracking-widest uppercase">{t.hero.scroll}</span>
+          <span className="text-white/40 font-ritual italic text-sm tracking-widest">{t.hero.scroll}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
             className="flex justify-center mt-2"
           >
-            <HiChevronDown className="text-gold-400" size={24} />
+            <HiChevronDown className="text-gold-400/70" size={24} />
           </motion.div>
         </Link>
       </motion.div>
