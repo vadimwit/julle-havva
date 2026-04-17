@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { HiChevronDown } from 'react-icons/hi';
@@ -21,14 +21,6 @@ export default function Hero() {
   const { lang } = useLanguage();
   const t = translations[lang];
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (v) {
-      v.muted = true;
-      v.play().catch(() => {});
-    }
-  }, []);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">

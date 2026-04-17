@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { useLanguage } from '../../context/LanguageContext';
@@ -118,14 +118,6 @@ export default function Services() {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (v) {
-      v.muted = true;
-      v.play().catch(() => {});
-    }
-  }, []);
 
   const paragraphs = s.description.split('\n\n');
   const forWhom = forWhomContent[lang];

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,14 +20,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks: NavItem[] = [
     { label: t.about, type: 'route', to: '/about' },
@@ -36,9 +29,7 @@ export default function Navbar() {
     { label: t.contact, type: 'scroll', to: 'contact' },
   ];
 
-  // Always show bg on subpages, or when scrolled on home
-  const showBg = !isHome || scrolled;
-  const navBg = showBg ? 'bg-plum-900/95 backdrop-blur-md shadow-md' : 'bg-transparent';
+  const navBg = 'bg-plum-900/95 backdrop-blur-md shadow-md';
   const textColor = 'text-white/80';
   const hoverColor = 'hover:text-gold-300';
 
