@@ -147,7 +147,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-30 bg-plum-900/98 flex flex-col items-center justify-center gap-7 md:hidden"
+            className="fixed inset-0 z-50 bg-plum-900 flex flex-col items-center justify-center gap-7 md:hidden"
           >
             <div
               className="absolute inset-0 pointer-events-none"

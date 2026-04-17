@@ -34,7 +34,7 @@ export default function Hero() {
       {/* Background video — sits on top of photo once ready */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-contain md:object-cover z-10"
+        className="absolute inset-0 w-full h-full object-cover z-10"
         autoPlay
         muted
         loop
