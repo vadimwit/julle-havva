@@ -17,12 +17,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-Single-page React 18 + TypeScript app with scroll-based navigation (no client router). Sections are stacked vertically in `App.tsx` and linked via `react-scroll`.
+React 18 + TypeScript SPA with HashRouter (react-router-dom v6). Routes: `/`, `/about`, `/influences`, `/gallery`, plus a `*` catch-all 404 page.
 
 **Key layers:**
 - **Vite 5.4** — bundler, dev server, base URL for GitHub Pages
 - **Tailwind CSS 3.4** — custom wellness-themed palette (plum, mauve, gold, stone, cream) with custom fonts (Playfair Display, Inter, Cormorant Garamond) defined in `tailwind.config.js`
 - **Framer Motion 11** — scroll-triggered animations, carousels (AnimatePresence)
+- **react-helmet-async** — per-page `<title>`, `<meta>`, and `<html lang>` updates
 - **Bilingual i18n** — English/Portuguese via React Context (`LanguageContext`)
 
 ## Content & Data Flow
@@ -45,12 +46,21 @@ This is required for GitHub Pages subdirectory deployment. Never hardcode paths 
 
 ## Component Structure
 
-Page sections render in order in `App.tsx`:
-`SplashScreen → Navbar → Hero → About → Services → Testimonials → Influences → Gallery → Availability → Contact → Footer → WhatsAppButton`
+Pages in `src/pages/`: `HomePage`, `AboutPage`, `InfluencesPage`, `GalleryPage`, `NotFoundPage`
+
+Each page includes a `<SEOHead>` component (`src/components/SEOHead.tsx`) with bilingual title/description.
 
 - Sections: `src/components/sections/` — one file per section
 - Shared UI: `src/components/ui/` — SectionTitle, WaveDivider, SplashScreen
 - Custom Tailwind components in `src/index.css`: `.btn-primary`, `.ritual-glow`, `.ritual-petal-bg`
+
+## SEO
+
+- JSON-LD structured data (LocalBusiness, Reviews, WebSite, Person) in `index.html`
+- `robots.txt` and `sitemap.xml` in `public/`
+- hreflang tags (en, pt, x-default) in `index.html`
+- Per-page meta tags via `react-helmet-async` + `SEOHead` component
+- Canonical URL: `https://jullehavva.com/`
 
 ## Styling Conventions
 

@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import InfluencesPage from './pages/InfluencesPage';
 import GalleryPage from './pages/GalleryPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/influences" element={<InfluencesPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
         <WhatsAppButton />
