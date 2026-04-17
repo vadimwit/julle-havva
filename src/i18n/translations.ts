@@ -41,6 +41,9 @@ export const translations = {
       subtitle:
         'Spaces where the body softens, the mind quiets, and something deeper can be felt.',
       followText: 'Follow us on Instagram for more',
+      prev: 'Previous',
+      next: 'Next',
+      dot: (n: number) => `Photo ${n}`,
     },
     testimonials: {
       title: 'What is felt after a session',
@@ -155,6 +158,9 @@ export const translations = {
       subtitle:
         'Espaços onde o corpo suaviza, a mente aquieta, e algo mais profundo pode ser sentido.',
       followText: 'Siga-nos no Instagram para mais conteúdo',
+      prev: 'Anterior',
+      next: 'Próximo',
+      dot: (n: number) => `Foto ${n}`,
     },
     testimonials: {
       title: 'O que se sente após uma sessão',
