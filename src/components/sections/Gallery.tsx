@@ -152,24 +152,6 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Landscape video strip */}
-        <motion.div
-          className="mt-8 w-full rounded-2xl overflow-hidden border border-plum-700/40"
-          style={{ height: 140 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <video
-            src={asset('/videos/gallery/20240415_202803.mov')}
-            className="w-full h-full object-cover object-center"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        </motion.div>
-
         {/* Instagram CTA */}
         <motion.div
           className="text-center mt-12"

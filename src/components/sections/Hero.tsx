@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { HiChevronDown } from 'react-icons/hi';
@@ -22,6 +22,14 @@ export default function Hero() {
   const t = translations[lang];
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v) {
+      v.muted = true;
+      v.play().catch(() => {});
+    }
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
@@ -34,7 +42,7 @@ export default function Hero() {
       {/* Background video — sits on top of photo once ready */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-10"
+        className="absolute inset-0 w-full h-full object-contain md:object-cover z-10"
         autoPlay
         muted
         loop
@@ -68,7 +76,7 @@ export default function Hero() {
           {/* Label — with crescent moon ritual symbols */}
           <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
             <span className="h-px w-6 sm:w-10 bg-gold-400/60" />
-            <span className="font-ritual italic text-gold-300 text-sm sm:text-base md:text-lg tracking-[0.15em] sm:tracking-[0.2em]">
+            <span className="font-ritual italic text-gold-300 text-base sm:text-lg md:text-xl tracking-[0.15em] sm:tracking-[0.2em]">
               ☽&ensp;{lang === 'en' ? 'Kusum Modak Method' : 'Método Kusum Modak'}&ensp;☾
             </span>
             <span className="h-px w-6 sm:w-10 bg-gold-400/60" />

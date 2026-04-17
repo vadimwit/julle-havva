@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { useLanguage } from '../../context/LanguageContext';
@@ -116,7 +116,16 @@ export default function Services() {
   const s = service[lang];
 
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v) {
+      v.muted = true;
+      v.play().catch(() => {});
+    }
+  }, []);
 
   const paragraphs = s.description.split('\n\n');
   const forWhom = forWhomContent[lang];
@@ -192,11 +201,11 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-10 w-full rounded-2xl overflow-hidden border border-plum-700/40"
-          style={{ height: 220 }}
         >
           <video
-            src={asset('/videos/gallery/Release.mov')}
-            className="w-full h-full object-cover" style={{ objectPosition: '50% 35%' }}
+            ref={videoRef}
+            src={asset('/videos/gallery/Release.mp4')}
+            className="w-full object-contain md:object-cover" style={{ objectPosition: '50% 35%' }}
             autoPlay
             muted
             loop

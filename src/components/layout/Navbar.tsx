@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineMenuAlt3, HiX } from 'react-icons/hi';
 import { useLanguage } from '../../context/LanguageContext';
 import { translations } from '../../i18n/translations';
 import { siteConfig } from '../../data/content';
 
+interface NavItem {
+  label: string;
+  type: 'route' | 'scroll';
+  to: string;
+}
+
 export default function Navbar() {
   const { lang, setLang } = useLanguage();
   const t = translations[lang].nav;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,17 +29,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: t.about, to: 'about' },
-    { label: t.services, to: 'services' },
-    { label: t.gallery, to: 'gallery' },
-    { label: t.pricing, to: 'pricing' },
-    { label: t.contact, to: 'contact' },
+  const navLinks: NavItem[] = [
+    { label: t.about, type: 'route', to: '/about' },
+    { label: lang === 'en' ? 'Our Influences' : 'As Nossas Influências', type: 'route', to: '/influences' },
+    { label: t.gallery, type: 'route', to: '/gallery' },
+    { label: t.contact, type: 'scroll', to: 'contact' },
   ];
 
-  const navBg = scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent';
-  const textColor = scrolled ? 'text-stone-700' : 'text-white';
-  const hoverColor = scrolled ? 'hover:text-mauve-500' : 'hover:text-gold-300';
+  // Always show bg on subpages, or when scrolled on home
+  const showBg = !isHome || scrolled;
+  const navBg = showBg ? 'bg-plum-900/95 backdrop-blur-md shadow-md' : 'bg-transparent';
+  const textColor = 'text-white/80';
+  const hoverColor = 'hover:text-gold-300';
+
+  const handleContactClick = () => {
+    if (isHome) return; // scroll link handles it
+    navigate('/');
+    setTimeout(() => {
+      const el = document.getElementById('contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  };
 
   return (
     <>
@@ -38,67 +58,87 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
 
             {/* Logo */}
-            <Link to="hero" smooth duration={600} className="cursor-pointer select-none">
-              <span className={`font-serif text-2xl font-semibold tracking-wide transition-colors duration-300 ${scrolled ? 'text-gold-500' : 'text-gold-300'}`}>
+            <RouterLink to="/" className="cursor-pointer select-none">
+              <span className="font-serif text-2xl font-semibold tracking-wide text-gold-300 transition-colors duration-300">
                 {siteConfig.name}
               </span>
-              <span className={`block text-[10px] tracking-[0.3em] uppercase font-medium transition-colors duration-300 ${scrolled ? 'text-stone-400' : 'text-stone-300'}`}>
+              <span className="block text-[10px] tracking-[0.3em] uppercase font-medium text-stone-400 transition-colors duration-300">
                 Massage Therapy
               </span>
-            </Link>
+            </RouterLink>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-7">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  smooth
-                  duration={600}
-                  offset={-80}
-                  spy
-                  activeClass="!text-mauve-500"
-                  className={`text-sm font-medium cursor-pointer transition-colors duration-300 ${textColor} ${hoverColor}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.type === 'route' ? (
+                  <RouterLink
+                    key={link.to}
+                    to={link.to}
+                    className={`text-sm font-medium cursor-pointer transition-colors duration-300 ${textColor} ${hoverColor} ${location.pathname === link.to ? '!text-mauve-400' : ''}`}
+                  >
+                    {link.label}
+                  </RouterLink>
+                ) : isHome ? (
+                  <ScrollLink
+                    key={link.to}
+                    to={link.to}
+                    smooth
+                    duration={600}
+                    offset={-80}
+                    spy
+                    activeClass="!text-mauve-400"
+                    className={`text-sm font-medium cursor-pointer transition-colors duration-300 ${textColor} ${hoverColor}`}
+                  >
+                    {link.label}
+                  </ScrollLink>
+                ) : (
+                  <button
+                    key={link.to}
+                    onClick={handleContactClick}
+                    className={`text-sm font-medium cursor-pointer transition-colors duration-300 ${textColor} ${hoverColor}`}
+                  >
+                    {link.label}
+                  </button>
+                )
+              )}
 
               {/* Language toggle */}
-              <div className={`flex items-center gap-1 text-xs font-semibold border rounded-full px-2.5 py-1 transition-colors duration-300 ${scrolled ? 'border-rose-200' : 'border-white/30'}`}>
+              <div className="flex items-center gap-1 text-xs font-semibold border border-white/20 rounded-full px-2.5 py-1 transition-colors duration-300">
                 <button
                   onClick={() => setLang('en')}
-                  className={`transition-colors duration-200 ${lang === 'en' ? 'text-mauve-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
+                  className={`transition-colors duration-200 ${lang === 'en' ? 'text-mauve-400' : 'text-white/50 hover:text-white'}`}
                 >
                   EN
                 </button>
-                <span className={scrolled ? 'text-rose-200' : 'text-white/30'}>|</span>
+                <span className="text-white/30">|</span>
                 <button
                   onClick={() => setLang('pt')}
-                  className={`transition-colors duration-200 ${lang === 'pt' ? 'text-mauve-500' : scrolled ? 'text-stone-400 hover:text-stone-600' : 'text-white/50 hover:text-white'}`}
+                  className={`transition-colors duration-200 ${lang === 'pt' ? 'text-mauve-400' : 'text-white/50 hover:text-white'}`}
                 >
                   PT
                 </button>
               </div>
 
-              <Link
-                to="contact"
-                smooth
-                duration={600}
-                offset={-80}
-                className="btn-primary text-sm cursor-pointer"
-              >
-                {t.book}
-              </Link>
+              {isHome ? (
+                <ScrollLink
+                  to="contact"
+                  smooth
+                  duration={600}
+                  offset={-80}
+                  className="btn-primary text-sm cursor-pointer"
+                >
+                  {t.book}
+                </ScrollLink>
+              ) : (
+                <button onClick={handleContactClick} className="btn-primary text-sm cursor-pointer">
+                  {t.book}
+                </button>
+              )}
             </div>
 
             {/* Mobile Hamburger */}
             <button
-              className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
-                scrolled
-                  ? 'text-stone-700 bg-transparent'
-                  : 'text-white bg-plum-900/40 backdrop-blur-sm border border-white/10'
-              }`}
+              className="md:hidden p-2 rounded-lg text-white bg-plum-900/40 backdrop-blur-sm border border-white/10 transition-all duration-300"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={t.openMenu}
             >
@@ -108,7 +148,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu — deep plum */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -118,7 +158,6 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-30 bg-plum-900/98 flex flex-col items-center justify-center gap-7 md:hidden"
           >
-            {/* Ambient glow in mobile menu */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -149,16 +188,36 @@ export default function Navbar() {
                 transition={{ delay: i * 0.07 }}
                 className="relative z-10"
               >
-                <Link
-                  to={link.to}
-                  smooth
-                  duration={600}
-                  offset={-80}
-                  className="text-white/80 text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                {link.type === 'route' ? (
+                  <RouterLink
+                    to={link.to}
+                    className="text-white/80 text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </RouterLink>
+                ) : isHome ? (
+                  <ScrollLink
+                    to={link.to}
+                    smooth
+                    duration={600}
+                    offset={-80}
+                    className="text-white/80 text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </ScrollLink>
+                ) : (
+                  <button
+                    className="text-white/80 text-2xl font-serif font-medium hover:text-gold-400 transition-colors cursor-pointer"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      handleContactClick();
+                    }}
+                  >
+                    {link.label}
+                  </button>
+                )}
               </motion.div>
             ))}
 
@@ -185,16 +244,28 @@ export default function Navbar() {
               transition={{ delay: navLinks.length * 0.07 }}
               className="relative z-10"
             >
-              <Link
-                to="contact"
-                smooth
-                duration={600}
-                offset={-80}
-                className="btn-primary mt-2 inline-block cursor-pointer"
-                onClick={() => setMobileOpen(false)}
-              >
-                {t.book}
-              </Link>
+              {isHome ? (
+                <ScrollLink
+                  to="contact"
+                  smooth
+                  duration={600}
+                  offset={-80}
+                  className="btn-primary mt-2 inline-block cursor-pointer"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t.book}
+                </ScrollLink>
+              ) : (
+                <button
+                  className="btn-primary mt-2 inline-block cursor-pointer"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    handleContactClick();
+                  }}
+                >
+                  {t.book}
+                </button>
+              )}
             </motion.div>
           </motion.div>
         )}
